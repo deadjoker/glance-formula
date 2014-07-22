@@ -1,0 +1,10 @@
+{% set glance=salt["grains.filter_by"]({
+  "default":{
+    "name": "glance",
+    "pkg": "glance",
+    "service": "glance",
+    "client_pkg": "python-glanceclient",
+  }
+  },merge=salt["pillar.get"]("glance:lookup")) %}
+{#- vim:ft=sls
+-#}
