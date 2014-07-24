@@ -1,0 +1,39 @@
+# Used by mysql module
+mysql.pass: '123123'
+# Used by keystone module
+keystone.token: ADMIN_TOKEN
+keystone.endpoint: http://172.16.0.8:35357/v2.0
+
+keystone:
+  public_ip: 192.168.0.217
+  internal_ip: 172.16.0.8
+  admin_ip: 172.16.0.8
+  mysql:
+    ip: 172.16.0.8
+    password: 'pass'
+
+glance:
+  public_ip: 192.168.0.217
+  internal_ip: 172.16.0.8
+  admin_ip: 172.16.0.8
+  mysql:
+    ip: 172.16.0.8
+    password: 'pass'
+  keystone:
+    admin:
+      password: 'pass'
+      email: zhang.lei.fly@gmail.com
+  conf:
+    DEFAULT:
+      debug: False
+      verbose: False
+      default_store: file
+      rabbit_host: 172.16.0.8
+      rabbit_password: guest
+
+mysql:
+  server:
+    root_password: '123123'
+    bind-address: 0.0.0.0
+{#- vim:ft=sls
+-#}

@@ -1,8 +1,8 @@
 {% set glance=salt["grains.filter_by"]({
   "default":{
     "name": "glance",
-    "pkg": "glance",
-    "service": "glance",
+    "pkg": ['glance', 'glance-api', 'glance-registry', 'glance-common'],
+    "service": ['glance-api', 'glance-registry'],
     "client_pkg": "python-glanceclient",
   }
   },merge=salt["pillar.get"]("glance:lookup")) %}

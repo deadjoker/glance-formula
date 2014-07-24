@@ -3,10 +3,9 @@
 {{ glance.name }}:
   pkg.installed:
     - refresh: False
-    - pkgs:
-      - {{ glance.pkg }}
+    - pkgs: {{ glance.pkg }}
   service.running:
-    - name: {{ glance.service }}
+    - names: {{ glance.service }}
     - enable: True
     - require:
       - pkg: {{ glance.name }}
