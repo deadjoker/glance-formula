@@ -23,14 +23,16 @@ glance:
     admin:
       password: 'pass'
       email: zhang.lei.fly@gmail.com
-  conf:
+  api-config:
     DEFAULT:
       debug: False
       verbose: False
-      bind-address: 0.0.0.0
-      default_store: file
       rabbit_host: 172.16.0.8
       rabbit_password: guest
+  reg-config:
+    DEFAULT:
+      debug: False
+      verbose: False
 
 mysql:
   server:
