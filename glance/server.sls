@@ -1,4 +1,6 @@
 {%- from "glance/map.jinja" import glance with context %}
+include:
+  - .db
 
 {{ glance.name }}:
   pkg.installed:
