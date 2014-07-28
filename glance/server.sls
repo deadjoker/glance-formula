@@ -17,11 +17,11 @@
     - watch_in:
       - service: {{ glance.name }}
 
-{{ name }}_sync_db:
+{{ glance.name }}_sync_db:
   cmd.run:
     - name: glance-manage db_sync
     - require:
-      - mysql_database: {{ name }}-db
-      - mysql_user: {{ name }}-db
-      - mysql_grants: {{ name }}-db
+      - mysql_database: {{ glance.name }}-db
+      - mysql_user: {{ glance.name }}-db
+      - mysql_grants: {{ glance.name }}-db
       - file: /etc/glance
