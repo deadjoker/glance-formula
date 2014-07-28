@@ -2,4 +2,4 @@ include:
   - .db
   - .server
   - .client
-  - .glance
+  - .keystone

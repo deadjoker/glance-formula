@@ -80,19 +80,69 @@
   }
 } %}
 
-{% for section, value in salt["pillar.get"]("glance:api-config").iteritems() %}
-  {% if not glance_api_config.has_key(section) %}
-    {% do glance_api_config.update({ section:{} }) %}
-  {% endif %}
-  {% do glance_api_config[section].update(value) %}
-{% endfor %}
+# Set the glance-cache default config
+{%- set glance_cache_config = {
+  "DEFAULT": {
+    "log_file": "/var/log/glance/image-cache.log",
+    "image_cache_dir": "/var/lib/glance/image-cache/",
+    "image_cache_stall_time": "86400",
+    "image_cache_invalid_entry_grace_period": "3600",
+    "image_cache_max_size": "10737418240",
+    "registry_host": "0.0.0.0",
+    "registry_port": "9191",
+    "filesystem_store_datadir": "/var/lib/glance/images/",
+  }
+} %}
 
-{% for section, value in salt["pillar.get"]("glance:reg-config").iteritems() %}
-  {% if not glance_reg_config.has_key(section) %}
-    {% do glance_reg_config.update({ section:{} }) %}
-  {% endif %}
-  {% do glance_reg_config[section].update(value) %}
-{% endfor %}
+# Set the glance-scrubber default config
+{%- set glance_scb_config = {
+  "DEFAULT": {
+    "log_file": "/var/log/glance/scrubber.log",
+    "daemon": "False",
+    "wakeup_time": "300",
+    "scrubber_datadir": "/var/lib/glance/scrubber",
+    "cleanup_scrubber": "False",
+    "cleanup_scrubber_time": "86400",
+    "registry_host": "0.0.0.0",
+    "registry_port": "9191",
+  }
+} %}
+
+{% if salt["pillar.get"]("glance:api-config") %}
+  {% for section, value in salt["pillar.get"]("glance:api-config").iteritems() %}
+    {% if not glance_api_config.has_key(section) %}
+      {% do glance_api_config.update({ section:{} }) %}
+    {% endif %}
+    {% do glance_api_config[section].update(value) %}
+  {% endfor %}
+{% endif %}
+
+{% if salt["pillar.get"]("glance:reg-config") %}
+  {% for section, value in salt["pillar.get"]("glance:reg-config").iteritems() %}
+    {% if not glance_reg_config.has_key(section) %}
+      {% do glance_reg_config.update({ section:{} }) %}
+    {% endif %}
+    {% do glance_reg_config[section].update(value) %}
+  {% endfor %}
+{% endif %}
+
+{% if salt["pillar.get"]("glance:cache-config") %}
+  {% for section, value in salt["pillar.get"]("glance:cache-config").iteritems() %}
+    {% if not glance_cache_config.has_key(section) %}
+      {% do glance_cache_config.update({ section:{} }) %}
+    {% endif %}
+    {% do glance_cache_config[section].update(value) %}
+  {% endfor %}
+{% endif %}
+
+{% if salt["pillar.get"]("glance:scb-config") %}
+  {% for section, value in salt["pillar.get"]("glance:scb-config").iteritems() %}
+    {% if not glance_scb_config.has_key(section) %}
+      {% do glance_scb_config.update({ section:{} }) %}
+    {% endif %}
+    {% do glance_scb_config[section].update(value) %}
+  {% endfor %}
+{% endif %}
 
 {#- vim:ft=sls
 -#}

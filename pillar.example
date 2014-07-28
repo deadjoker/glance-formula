@@ -27,9 +27,5 @@ glance:
       debug: False
       verbose: False
 
-mysql:
-  server:
-    root_password: '123123'
-    bind-address: 0.0.0.0
 {#- vim:ft=sls
 -#}
