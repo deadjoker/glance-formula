@@ -16,3 +16,12 @@
     - template: jinja
     - watch_in:
       - service: {{ glance.name }}
+
+{{ name }}_sync_db:
+  cmd.run:
+    - name: glance-manage db_sync
+    - require:
+      - mysql_database: {{ name }}-db
+      - mysql_user: {{ name }}-db
+      - mysql_grants: {{ name }}-db
+      - file: /etc/glance
