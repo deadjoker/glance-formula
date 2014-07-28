@@ -12,16 +12,13 @@ glance:
     ip: 172.16.0.8
     password: 'pass'
   keystone:
-    internal_ip: 172.16.0.8
-    user:
-      password: 'pass'
-      email: '123@123.com'
+    host: 172.16.0.8
+    password: 'pass'
+    email: '123@123.com'
   api-config:
     DEFAULT:
       debug: False
       verbose: False
-      rabbit_host: 172.16.0.8
-      rabbit_password: guest
   reg-config:
     DEFAULT:
       debug: False
