@@ -43,12 +43,12 @@
     "connection": "mysql://glance:" + salt["pillar.get"]("glance:mysql:password") + "@" + salt["pillar.get"]("glance:mysql:ip","localhost") + "/glance?charset=utf8",
   },
   "keystone_authtoken": {
-    "auth_host": salt["pillar.get"]("keystone:internal_ip", "localhost"),
+    "auth_host": salt["pillar.get"]("glance:keystone:internal_ip", "localhost"),
     "auth_port": "35357",
     "auth_protocol": "http",
     "admin_tenant_name": "service",
     "admin_user": "glance",
-    "admin_password": salt["pillar.get"]("glance:keystone:admin:password"),
+    "admin_password": salt["pillar.get"]("glance:keystone:user:password"),
   },
   "paste_deploy": {
     "flavor": "keystone+cachemanagement",
@@ -68,12 +68,12 @@
     "connection": "mysql://glance:" + salt["pillar.get"]("glance:mysql:password") + "@" + salt["pillar.get"]("glance:mysql:ip","localhost") + "/glance?charset=utf8",
   },
   "keystone_authtoken": {
-    "auth_host": salt["pillar.get"]("keystone:internal_ip", "localhost"),
+    "auth_host": salt["pillar.get"]("glance:keystone:internal_ip", "localhost"),
     "auth_port": "35357",
     "auth_protocol": "http",
     "admin_tenant_name": "service",
     "admin_user": "glance",
-    "admin_password": salt["pillar.get"]("glance:keystone:admin:password"),
+    "admin_password": salt["pillar.get"]("glance:keystone:user:password"),
   },
   "paste_deploy": {
     "flavor": "keystone",

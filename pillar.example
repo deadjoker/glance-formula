@@ -4,14 +4,6 @@ mysql.pass: '123123'
 keystone.token: ADMIN_TOKEN
 keystone.endpoint: http://172.16.0.8:35357/v2.0
 
-keystone:
-  public_ip: 192.168.0.217
-  internal_ip: 172.16.0.8
-  admin_ip: 172.16.0.8
-  mysql:
-    ip: 172.16.0.8
-    password: 'pass'
-
 glance:
   public_ip: 192.168.0.217
   internal_ip: 172.16.0.8
@@ -20,9 +12,10 @@ glance:
     ip: 172.16.0.8
     password: 'pass'
   keystone:
-    admin:
+    internal_ip: 172.16.0.8
+    user:
       password: 'pass'
-      email: zhang.lei.fly@gmail.com
+      email: '123@123.com'
   api-config:
     DEFAULT:
       debug: False

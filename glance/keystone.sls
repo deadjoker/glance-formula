@@ -1,8 +1,8 @@
-glance_admin_user:
+keystone_glance_user:
   keystone.user_present:
     - name: glance
-    - password: {{ salt['pillar.get']('glance:keystone:admin:password') }}
-    - email: {{ salt['pillar.get']('glance:keystone:admin:email') }}
+    - password: {{ salt['pillar.get']('glance:keystone:user:password') }}
+    - email: {{ salt['pillar.get']('glance:keystone:user:email') }}
     - tenant: service
     - enable: True
     - roles:
